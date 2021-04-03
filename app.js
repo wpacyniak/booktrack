@@ -9,11 +9,11 @@ app.use(express.json());
 
 //baaaaaaaza danych
 const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb+srv://wpacyniak:<7092000wp>@books.yprgy.mongodb.net/bookTrack?retryWrites=true&w=majority';
-const client = new MongoClient(url, {useNewUrlParser: true});
+const url = "mongodb+srv://wpacyniak:<7092000wp>@books.yprgy.mongodb.net/bookTrack?retryWrites=true&w=majority";
+const client = new MongoClient(url, {useNewUrlParser: true, useUnifiedTopology: true});
 client.connect((err, database) => {
     //zawsze jest, zeby dzialalo, nasluchiwanie portu!!
-    db = client.db("bookTrack")
+    db = client.db("bookTrack");
 
     app.get('/', (req, res) => {
       res.render(path.join(__dirname + '/public/main.ejs'));
@@ -24,22 +24,30 @@ client.connect((err, database) => {
     })
 
     app.get('/booktrack', (req, res) => {
-      var cursor = db.collection('books').find().toArray(function(err, result) {
-        console.log('booktrack connect with web page YAYKS')
-        if (err) {return console.log(err) }
-        console.log('poszlo', result)
-        res.render(path.join(__dirname + '/public/booktrack.ejs'), {books:result});
+      var books = [];
+      db.collection('books').find({}).toArray((err, result) => {
+        console.log('booktrack connect with web page YAYKS');
+        if (err) throw err;
+        books = result;
+
+        console.log('poszlo', result);
+
+        res.render(path.join(__dirname + '/public/booktrack.ejs'), {
+          books: books
+        });
       })
     })
 
 
     app.listen(port, () => {
-      console.log(`Example app listening at http://localhost:${port}`)
+      console.log(`App listening at http://localhost:${port}`)
     })
 
 
+  client.close();
+});
 
-})
+
 
 
 

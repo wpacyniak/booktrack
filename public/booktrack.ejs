@@ -9,15 +9,24 @@
         <%- include ('resources/header.ejs') %>
         <!-- container - zbiorczy pojemnik responsywnej siatki -->
         <div class="container">
+            <div class="input-group" id="main-search-box">
+                <select class="form-select" id="input-select-city" name="city_id">
+                    <option selected value="0">CZY DZIAŁA...</option>
+                    <% for(let i=0; i < books.length; i++) { %>
+                    <option value="<%=books[i]._id%>"><%=books[i].title%></option>
+                    <% } %>
+                </select>
+                <button class="btn btn-danger" type="submit">YES!</button>
+            </div>
 
-            <ul class='books'>
+            <!-- <ul class='books'>
                 <% for(var i = 0; i<books.length; i++) {%>
                     <li class="book">
                       <span><%= books[i].title %></span>
                       <span><%= books[i].author %></span>
                     </li>
                   <% } %>
-            </ul>
+            </ul> -->
 
             <!-- responsywna siatka ma wiersze, która oddziela zestawy kolumn - wrapper dla kolumn -->
             <div class="row">

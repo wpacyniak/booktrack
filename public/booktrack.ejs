@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Bullet journal</title>
+        <title>Book track</title>
         <%- include ('resources/head.html') %>
     </head>
 
@@ -10,11 +10,20 @@
         <!-- container - zbiorczy pojemnik responsywnej siatki -->
         <div class="container">
 
+            <ul class='books'>
+                <% for(var i = 0; i<books.length; i++) {%>
+                    <li class="book">
+                      <span><%= books[i].title %></span>
+                      <span><%= books[i].author %></span>
+                    </li>
+                  <% } %>
+            </ul>
+
             <!-- responsywna siatka ma wiersze, która oddziela zestawy kolumn - wrapper dla kolumn -->
             <div class="row">
                 <div class="col-xs-12 col-lg-9 col-xl-8 mx-auto">
                     <p class="text-center">
-                        bujo
+                        ksionszki
                     </p>
                 </div>
             </div>

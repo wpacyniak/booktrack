@@ -38,7 +38,8 @@ client.connect((err, database) => {
         console.log('connected with database', result);
 
         res.render(path.join(__dirname + '/public/booktrack.ejs'), {
-          books: result
+          books: result,
+          current_year : null
         });
       });
     });

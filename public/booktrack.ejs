@@ -17,8 +17,14 @@
                     </p>
                     <select class="form-select" id="choose_year" aria-label="Default select example">
                         <option selected value = 0 >Wybierz rok...</option>
-                        <% for (let i = 0; i <books.length; i++) { %>
-                            <option value = "<%=books[i].year%>"><%=books[i].year%></option>
+                        <% var years = []
+                        for (let i = 0; i <books.length; i++) 
+                        { for (let j = 0; j < years.length; j++) {
+                            if(books[i].year != years[i])
+                                years.push(books[i].year);
+                        };
+                        for (let j = 0; j < years.length; j++) {  %>
+                            <option value = "<%=years[i]%>"><%=years[i]%></option>
                             <%} %>
                       </select>
                 </div>

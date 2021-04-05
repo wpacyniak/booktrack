@@ -1,8 +1,44 @@
 body {
         background-color: #ffb4a2;
+        font-family: 'Archivo Narrow', sans-serif;
 }
 
 #main_col {
-        background-color: #a2c3ff;
+        background-color: #FFFFFF;
         min-height: 100vh;
+}
+
+.navbar-brand {
+        font-weight: 600;
+}
+
+#title_main {
+        font-size: 30px;
+}
+
+#checkboxes_main {
+        font-size: 20px;
+}
+
+.text-primary {
+        color: #FF8F85 !important;
+}
+
+#name {
+        text-transform: uppercase;
+        font-weight: 400;
+}
+
+.subheading {
+        text-transform: uppercase;
+}
+
+#about_cv {
+        font-size: 17px;
+}
+
+#subtitle {
+        text-transform: uppercase;
+        font-weight: 300;
+        font-size: 35px;
 }

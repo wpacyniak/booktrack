@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Book track - year</title>
+        <%- include ('resources/head.html') %>
+    </head>
+
+    <body>
+        <%- include ('resources/header.ejs') %>
+        <div class="container"> 
+            <div class="row">
+                <div class="col-xs-12 col-lg-9 col-xl-10 mx-auto" id="main_col">
+                    <div>
+                        <h3>Przeczytane w tym roku: </h3>
+                        <table class="table">
+                                <thead>
+                                        <tr>
+                                                <th scope="col"> </th>
+                                                <th scope="col"> Tytuł </th>
+                                                <th scope="col"> Autor </th>
+                                                <th scope="col"> Liczba stron </th>
+                                                <th scope="col"> Data zakończenia </th>
+                                                <th scope="col"> Ocena </th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <% var i = 0 %>
+                                        <% for(let i=0; i < books.length; i++) { %>
+                                                <% if (books[i].year == 2020 and books[i].is_read == true) { i = i + 1 %>
+                                                        <th scope='row'> <%= i %> </th>
+                                                        <td > <%=books[i].title%> </td>
+                                                        <td > <%=books[i].author%> </td>
+                                                        <td > <%=books[i].pages%> </td>
+                                                        <td > <%=books[i].day%>-<%=books[i].month%>-<%=books[i].year%> </td>
+                                                        <td > <%=books[i].rate%> </td>
+                                                <% } %>
+                                        <% } %>
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+
+</html>

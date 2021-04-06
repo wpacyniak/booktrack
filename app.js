@@ -38,8 +38,22 @@ client.connect((err, database) => {
         console.log('connected with database', result);
 
         res.render(path.join(__dirname + '/public/booktrack.ejs'), {
+          books: result
+        });
+      });
+    });
+
+    app.get('/year', (req, res) => {
+      var cursor = db.collection('books').find({}).toArray((err, result) => {
+        console.log('try connecting with database');
+
+        if (err) throw err;
+
+        console.log('connected with database', result);
+
+        res.render(path.join(__dirname + '/public/year.ejs'), {
           books: result,
-          current_year : null
+          current_year : JSON.stringify(req.query.city_id)
         });
       });
     });

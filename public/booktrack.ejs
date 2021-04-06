@@ -10,18 +10,12 @@
         <div class="container"> 
             <div class="row">
                 <div class="col-xs-12 col-lg-9 col-xl-10 mx-auto" id="main_col">
-                    <select class="form-select" id="choose_year" aria-label="Default select example">
-                        <option selected value = 0 >Wybierz rok...</option>
-                        <option value = 2020>2020</option>
-                        <option value = 2021>2021</option>
-                    </select>
-                    <div>
-                        <h3>Przeczytane w tym roku: </h3>
-                        <% for(let i=0; i < books.length; i++) { %>
-                            <% if (books[i].year == 2020) { %>
-							<li ><%=books[i].title%></li>
-                            <% } %>
-						<% } %>
+                    <div class="col-xs-6 col-lg-4 col-xl-2 mx-auto">
+                        <select class="form-select" id="choose_year" aria-label="Default select example" on-change="choose_year.submit()" action ="/year">
+                            <option selected value = 0 >Wybierz rok...</option>
+                            <option value = 2020>2020</option>
+                            <option value = 2021>2021</option>
+                        </select>
                     </div>
                 </div>
             </div>

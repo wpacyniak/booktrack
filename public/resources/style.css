@@ -8,6 +8,12 @@ body {
         min-height: 100vh;
 }
 
+#choose-year {
+        text-align: center;
+        margin-top: 40vh;
+        transform: translateY(-50%);
+}
+
 .navbar-brand {
         font-weight: 600;
 }

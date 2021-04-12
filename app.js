@@ -39,11 +39,27 @@ client.connect((err, database) => {
 
         if (err) throw err;
 
-        console.log('connected with database', result);
+        console.log('connected with database');
 
         res.render(path.join(__dirname + '/public/year.ejs'), {
           books: result,
           current_year : req.query.choosen_year
+        });
+      });
+    });
+
+    app.get('/book_page', (req, res) => {
+      var id = req.query.book_id;
+
+      db.collection('books').findOne({'_id':id}).then(function(result) {
+        console.log('try finding the book');
+
+        if (err) throw err;
+
+        console.log('find the book');
+
+        res.render(path.join(__dirname + '/public/book_page.ejs'), {
+          current_book : result
         });
       });
     });

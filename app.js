@@ -49,17 +49,15 @@ client.connect((err, database) => {
     });
 
     app.get('/book_page', (req, res) => {
-      var id = req.query.book_id;
-
-      db.collection('books').findOne({'_id':id}).then(function(result) {
-        console.log('try finding the book');
+      var cursor = db.collection('books').find({}).toArray((err, result) => {
+        console.log('try connecting with database');
 
         if (err) throw err;
 
-        console.log('find the book');
-
+        console.log('connected with database');
+        let book = result.find(o => o._id == req.query.book_id);
         res.render(path.join(__dirname + '/public/book_page.ejs'), {
-          current_book : result
+          current_book : book
         });
       });
     });

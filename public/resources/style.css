@@ -1,11 +1,13 @@
 body {
         background-color: #ffb4a2;
         font-family: 'Archivo Narrow', sans-serif;
+        font-size: 120%;
 }
 
 #main_col {
         background-color: #FFFFFF;
         min-height: 100vh;
+        position: relative;
 }
 
 #choose-year {
@@ -49,4 +51,27 @@ body {
         font-size: 35px;
 }
 
+#cover_book {
+        width:28%;
+        padding: 2%;
+        object-fit: cover;
+        position: absolute;
+        right: 5%;
+        display: inline-block;
+ }
 
+ #form_choose_year {
+        background-color: #FFDAD6;
+        border-radius: 25px;
+        padding: 20px;
+ }
+
+ #book_info {
+        position:relative;
+        padding: 5%;
+        width: 70%;
+ }
+
+ .book_info_title {
+        font-weight:bold;
+ }

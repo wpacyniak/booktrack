@@ -10,7 +10,34 @@
         <div class="container"> 
             <div class="row">
                 <div class="col-xs-12 col-lg-9 col-xl-10 mx-auto" id="main_col">
-                    <div> <%=current_book.title%> </div>
+                    <h1 class="text-uppercase text-center"> 
+                        <%=current_book.title%> 
+                    </h1> 
+                    <div class="subheading mb-1 text-center"> 
+                        <%=current_book.author%> 
+                    </div>
+                    <div class="text-center">
+                        <% for(let x = 0; x < current_book.rate; x++) { %>
+                            <span>&#x2B50; </span>
+                            <% } %>
+                    </div>
+                    <blockquote class="blockquote text-center">
+                        <p class="lead"><em><%=current_book.quote%></em></p>
+                    </blockquote>
+                    <img id="cover_book" class="img-fluid" src="<%=current_book.cover%>" alt="Okładka ksiązki">
+                    <div id="book_info">
+                        <div class="text-left">
+                            <span class="book_info_title">Liczba stron: </span>
+                            <%=current_book.pages%>
+                        </div>
+                        <div class="text-left">
+                            <span class="book_info_title">Data przeczytania: </span>
+                            <%=current_book.day%>-<%=current_book.month%>-<%=current_book.year%> 
+                        </div>
+                        <p class="text-left text-justify" >
+                            <%=current_book.note%> 
+                        </p>
+                    </div>    
                 </div>
             </div>
         </div>

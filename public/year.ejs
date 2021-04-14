@@ -47,7 +47,14 @@
                         </table>
                     </div>
                     <div>
-                        <canvas id="GraphBook" width="400" height="400"></canvas>
+                        <h4 class="text-center">Liczba stron przeczytanych w danym miesiącu: </h4>
+                        <% var books_array = Array.from(Array(books.length), () => new Array(3)); %>
+                        <% for(let i=0; i < books.length; i++) { %>
+                            <% books_array[i][0] = books[i].year %> 
+                            <% books_array[i][1] = books[i].month %> 
+                            <% books_array[i][2] = books[i].pages %> 
+                        <% } %>                    
+                        <canvas id="GraphBook"></canvas>
                     </div>
                 </div>
             </div>
@@ -61,21 +68,20 @@
     
     <script>
         var lgth = parseInt(`<%- JSON.stringify(books.length) %>`);
-        console.log(lgth);
-        var books = Array.from(Array(lgth), () => new Array(2));
-       
-        var current_year = `<%- JSON.stringify(current_year) %>`;
-        var dataB = new Array(12);
+        var books = `<%- JSON.stringify(books_array) %>`;
+        var books = JSON.parse("[" + books + "]");
+        var current_year = '<%- JSON.stringify(current_year) %>';
+        var current_year = current_year.split('"');
+        var current_year = current_year[1];
+        var dataB = [0,0,0,0,0,0,0,0,0,0,0,0];
+
         for(let i = 0; i < dataB.length; i++) {
-            for(let j = 0; j < books.length; j++) {
-                if(books[j].year == current_year[0] && books[j].month == i+1) {
-                    dataB[i] += books[i]['pages'];
+            for(let j = 0; j < lgth; j++) {
+                if(books[0][j][0] == current_year && books[0][j][1] == i+1) {
+                    dataB[i] += books[0][j][2];
                 };
             };
         };
-        console.log(dataB);
-        console.log(current_year);
-        console.log(books);
         var content = document.getElementById('GraphBook').getContext("2d");
         var myChart = new Chart(content, {
             type: 'bar',
@@ -101,15 +107,8 @@
                 'rgba(255, 159, 64, 1)'
                     ],
                     borderWidth: 1
-                }],
-                options: {
-                    responsive: true,
-                    title: {
-                        display: true,
-                        text: 'Liczba stron przeczytanych w danym miesiącu'
-                    }
-                }
-            }
+                }]
+            },
         });
     </script>  
 </html>

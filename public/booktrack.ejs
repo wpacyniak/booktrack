@@ -10,11 +10,11 @@
         <div class="container"> 
             <div class="row">
                 <div class="col-xs-12 col-lg-9 col-xl-10 mx-auto" >
-                    <div class="col-xs-6 col-lg-4 col-xl-2 mx-auto" id="choose-year"> <!-- id tutaj do css --> 
-                        <form class= "row g-3" action ="/year" method="get" id="form_choose_year">
+                    <div class="col-xs-8 col-lg-6 col-xl-4 mx-auto" id="choose-year"> <!-- id tutaj do css --> 
+                        <form class= "row g-3" action ="/year" method="get" id="form_choose_year" onsubmit="event.preventDefault(); validateForm();">
                             <h3>Statystyki czytelnicze: </h3>
                             <div class="col-12">
-                                <select class="form-select" name="choosen_year" on-change="this.form.submit()">
+                                <select class="form-select" id="choosen_year" name="choosen_year">
                                     <option selected value = 0 >Wybierz rok...</option>
                                     <option value = 2020>2020</option>
                                     <option value = 2021>2021</option>
@@ -23,12 +23,30 @@
                             <div class="col-12">
                                 <button class="btn btn-light" type="submit">Potwierdź</button>
                             </div>
-                        </form>    
+                        </form>
+                        <div class="col-12">
+                            <a class="btn btn-light" href="/add_book">Dodaj książkę</a>
+                        </div>    
                     </div>
                 </div>
             </div>
         </div>
-    <%- include ('resources/scripts.html') %>    
+    <%- include ('resources/scripts.html') %>
+    <script type="text/javascript">
+		function validateForm() {
+			let select = document.getElementById("choosen_year");
+			let form = document.getElementById("form_choose_year");
+
+			if(select.value != 0 ){
+				form.submit();
+			}
+
+			else {
+				alert("Proszę wybrać rok!");
+			}
+
+		}
+	</script>    
     </body>
 
 </html>

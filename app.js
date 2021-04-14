@@ -33,6 +33,10 @@ client.connect((err, database) => {
         res.render(path.join(__dirname + '/public/booktrack.ejs'));
     });
 
+    app.get('/add_book', (req, res) => {
+      res.render(path.join(__dirname + '/public/add_book.ejs'));
+    });
+
     app.get('/year', (req, res) => {
       var cursor = db.collection('books').find({}).toArray((err, result) => {
         console.log('try connecting with database');

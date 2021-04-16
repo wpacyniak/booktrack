@@ -7,6 +7,8 @@ const port = 3000
 //idk czy to potrzebne xd
 app.use(express.static(__dirname + '/public/'));
 app.use(express.json());
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: false}));
 
 //zmienne do bazy danych
 const MongoClient = require('mongodb').MongoClient;
@@ -35,6 +37,31 @@ client.connect((err, database) => {
 
     app.get('/add_book', (req, res) => {
       res.render(path.join(__dirname + '/public/add_book.ejs'));
+    });
+
+    app.post('/insert', (req, res) => {
+      var item = {
+        title: req.body.titleBook,
+        author: req.body.authorBook,
+        pages: req.body.pagesBook,
+        is_read: true,
+        cover: req.body.coverBook,
+        rate: req.body.rateBook,
+        note: req.body.noteBook,
+        day: req.body.day,
+        year: req.body.year,
+        month: req.body.month,
+        quote: req.body.quote
+      };
+      db.collection('books').insertOne(item, function(err, result) {
+        if (err) throw err;
+        console.log('Item inserted', result.ops);
+      });
+      res.redirect('/booktrack');
+    });
+
+    app.post('/update', (req, res) => {
+
     });
 
     app.get('/year', (req, res) => {

@@ -50,9 +50,9 @@
                         <h4 class="text-center">Liczba stron przeczytanych w danym miesiącu: </h4>
                         <% var books_array = Array.from(Array(books.length), () => new Array(3)); %>
                         <% for(let i=0; i < books.length; i++) { %>
-                            <% books_array[i][0] = books[i].year %> 
-                            <% books_array[i][1] = books[i].month %> 
-                            <% books_array[i][2] = books[i].pages %> 
+                            <% books_array[i][0] = parseInt(books[i].year) %> 
+                            <% books_array[i][1] = parseInt(books[i].month) %> 
+                            <% books_array[i][2] = parseInt(books[i].pages) %> 
                         <% } %>                    
                         <canvas id="GraphBook"></canvas>
                     </div>
@@ -68,17 +68,15 @@
     
     <script>
         var lgth = parseInt(`<%- JSON.stringify(books.length) %>`);
-        var books = `<%- JSON.stringify(books_array) %>`;
-        var books = JSON.parse("[" + books + "]");
-        var current_year = '<%- JSON.stringify(current_year) %>';
-        var current_year = current_year.split('"');
-        var current_year = current_year[1];
-        var dataB = [0,0,0,0,0,0,0,0,0,0,0,0];
+        var books =JSON.parse( `<%- JSON.stringify(books_array) %>`);
+        var current_year = '<%- JSON.stringify(current_year) %>'.split('"');
+        current_year = current_year[1];
+        var dataB = new Array(12).fill(0);
 
         for(let i = 0; i < dataB.length; i++) {
             for(let j = 0; j < lgth; j++) {
-                if(books[0][j][0] == current_year && books[0][j][1] == i+1) {
-                    dataB[i] += books[0][j][2];
+                if(books[j][0] == current_year && books[j][1] == i+1) {
+                    dataB[i] += books[j][2];
                 };
             };
         };
@@ -91,20 +89,32 @@
                     label: 'Rok ' + current_year,
                     data: dataB,
                     backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                        'rgba(247, 37, 133, 0.5)',
+                        'rgba(181, 23, 158, 0.5)',
+                        'rgba(114, 9, 183, 0.5)',
+                        'rgba(86, 11, 173, 0.5)',
+                        'rgba(72, 12, 168, 0.5)',
+                        'rgba(58, 12, 163, 0.5)',
+                        'rgba(63, 55, 201, 0.5)',
+                        'rgba(67, 97, 238, 0.5)',
+                        'rgba(72, 149, 239, 0.5)',
+                        'rgba(76, 201, 240, 0.5)',
+                        'rgba(100, 223, 223, 0.5)',
+                        'rgba(128, 255, 219, 0.5)'
                     ],
                     borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                        'rgba(247, 37, 133, 1)',
+                        'rgba(181, 23, 158, 1)',
+                        'rgba(114, 9, 183, 1)',
+                        'rgba(86, 11, 173, 1)',
+                        'rgba(72, 12, 168, 1)',
+                        'rgba(58, 12, 163, 1)',
+                        'rgba(63, 55, 201, 1)',
+                        'rgba(67, 97, 238, 1)',
+                        'rgba(72, 149, 239, 1)',
+                        'rgba(76, 201, 240, 1)',
+                        'rgba(100, 223, 223, 1)',
+                        'rgba(128, 255, 219, 1)'
                     ],
                     borderWidth: 1
                 }]

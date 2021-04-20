@@ -82,3 +82,8 @@ body {
  #GraphBook {
          margin-bottom:40px;
  }
+
+ .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #ffb4a2 !important;
+    border-color: #ffb4a2 !important;
+}

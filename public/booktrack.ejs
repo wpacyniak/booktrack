@@ -12,7 +12,7 @@
                 <div class="col-xs-12 col-lg-9 col-xl-10 mx-auto" >
                     <div class="col-xs-8 col-lg-6 col-xl-4 mx-auto" id="choose-year"> <!-- id tutaj do css --> 
                         <form class= "row g-3" action ="/year" method="get" id="form_choose_year" onsubmit="event.preventDefault(); validateForm();">
-                            <h3>Statystyki czytelnicze: </h3>
+                            <h4>Statystyki czytelnicze: </h4>
                             <div class="col-12">
                                 <select class="form-select" id="choosen_year" name="choosen_year">
                                     <option selected value = 0 >Wybierz rok...</option>
@@ -24,8 +24,11 @@
                                 <button class="btn btn-light" type="submit">Potwierdź</button>
                             </div>
                         </form>
-                        <div class="col-12">
+                        <div class="col-12 mb-4">
                             <a class="btn btn-light" href="/add_book">Dodaj książkę</a>
+                        </div>
+                        <div class="col-12">
+                            <a class="btn btn-light" href="/book_plans">Plany czytelnicze</a>
                         </div>    
                     </div>
                 </div>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Book track - year</title>
+        <%- include ('resources/head.html') %>
+    </head>
+
+    <body>
+        <%- include ('resources/header.ejs') %>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xs-12 col-xl-10">
+                    <% for(let i=0; i < books.length/3; i++) { %>
+                    <div class="row justify-content-center">
+                        <% for(let j=0; j < 3; j++) { %>
+                        <div class="col-sm-6 col-md-4">
+                            <% let book = books[3*i+j] %>
+                            <% if (book != null) { %>
+                            <div class="card">
+                                <img class="card-img-top" src="<%=book.cover%>"
+                                    alt="Okładka">
+                                <div class="card-body">
+                                    <h4 class="card-title text-center"><%=book.title%></h4>
+                                    <h6 class="card-text text-center"> <%=book.author%></h6>
+                                    <h6 class="card-text text-center"> Liczba stron: <%=book.pages%></h6>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="/add_book" 
+                                            class="btn btn-primary">Przeczytane</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                        </div>
+                        <% } %>
+                    </div>
+                    <% } %>
+                </div>
+        </div>
+    </body>
+    <%- include ('resources/scripts.html') %> 
+</html>

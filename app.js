@@ -60,10 +60,6 @@ client.connect((err, database) => {
       res.redirect('/booktrack');
     });
 
-    app.post('/update', (req, res) => {
-
-    });
-
     app.get('/year', (req, res) => {
       var cursor = db.collection('books').find({}).toArray((err, result) => {
         console.log('try connecting with database');
@@ -92,6 +88,18 @@ client.connect((err, database) => {
         });
       });
     });
+
+    app.get('/book_plans', (req, res) => {
+      var cursor = db.collection('books').find({is_read: false}).toArray((err, result) => {
+        console.log('try connecting with database');
+        if (err) throw err;
+        console.log('connected with database');
+        res.render(path.join(__dirname + '/public/book_plans.ejs'), {
+          books: result
+        });
+      });
+    });
+    
 
 //zawsze jest, zeby dzialalo, nasluchiwanie portu!!
     app.listen(port, () => {

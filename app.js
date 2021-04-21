@@ -39,6 +39,21 @@ client.connect((err, database) => {
       res.render(path.join(__dirname + '/public/add_book.ejs'));
     });
 
+    app.get('/add_book/delete', (req, res) => {
+      db.collection('books').deleteOne(( {"_id": JSON.stringify(req.query.book_id)}), function(err, result) {
+            if (err) throw err;
+            console.log("item deleted");
+            res.redirect('/add_book');
+
+        // res.render(path.join(__dirname + '/public/add_book.ejs'), {
+        //     title: req.query.book_title,
+        //     author: req.query.book_author,
+        //     cover: req.query.book_cover,
+        //     pages: req.query.book_pages
+        // });
+      });
+    });
+
     app.post('/insert', (req, res) => {
       var item = {
         title: req.body.titleBook,
@@ -62,11 +77,11 @@ client.connect((err, database) => {
 
     app.get('/year', (req, res) => {
       var cursor = db.collection('books').find({}).toArray((err, result) => {
-        console.log('try connecting with database');
+        console.log('Try connecting with database - year page');
 
         if (err) throw err;
 
-        console.log('connected with database');
+        console.log('Connected with database - year page');
 
         res.render(path.join(__dirname + '/public/year.ejs'), {
           books: result,
@@ -77,11 +92,11 @@ client.connect((err, database) => {
 
     app.get('/book_page', (req, res) => {
       var cursor = db.collection('books').find({}).toArray((err, result) => {
-        console.log('try connecting with database');
+        console.log('Connecting with database - book page');
 
         if (err) throw err;
 
-        console.log('connected with database');
+        console.log('Connected with database - book page');
         let book = result.find(o => o._id == req.query.book_id);
         res.render(path.join(__dirname + '/public/book_page.ejs'), {
           current_book : book
@@ -91,9 +106,8 @@ client.connect((err, database) => {
 
     app.get('/book_plans', (req, res) => {
       var cursor = db.collection('books').find({is_read: false}).toArray((err, result) => {
-        console.log('try connecting with database');
         if (err) throw err;
-        console.log('connected with database');
+        console.log('Connected with database - book plans (is read: false)');
         res.render(path.join(__dirname + '/public/book_plans.ejs'), {
           books: result
         });

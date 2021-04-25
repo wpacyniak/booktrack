@@ -8,6 +8,7 @@ const port = 3000
 app.use(express.static(__dirname + '/public/'));
 app.use(express.json());
 var bodyParser = require('body-parser');
+var ObjectID = require('mongodb').ObjectID;
 app.use(bodyParser.urlencoded({extended: false}));
 
 //zmienne do bazy danych
@@ -39,19 +40,40 @@ client.connect((err, database) => {
       res.render(path.join(__dirname + '/public/add_book.ejs'));
     });
 
-    app.get('/add_book/delete', (req, res) => {
-      db.collection('books').deleteOne(( {"_id": JSON.stringify(req.query.book_id)}), function(err, result) {
-            if (err) throw err;
-            console.log("item deleted");
-            res.redirect('/add_book');
+    app.get('/add_book_plan', (req, res) => {
+      res.render(path.join(__dirname + '/public/add_book_plan.ejs'));
+    });
 
-        // res.render(path.join(__dirname + '/public/add_book.ejs'), {
-        //     title: req.query.book_title,
-        //     author: req.query.book_author,
-        //     cover: req.query.book_cover,
-        //     pages: req.query.book_pages
-        // });
+    app.get('/update_book', (req, res) => {
+      var cursor = db.collection('books').find({}).toArray((err, result) => {
+        console.log('Connecting with database - update book page');
+
+        if (err) throw err;
+
+        console.log('Connected with database - update book page');
+        let book = result.find(o => o._id == req.query.book_id);
+        res.render(path.join(__dirname + '/public/update_book.ejs'), {
+          current_book : book
+        });
       });
+    });
+
+    app.post('/update', (req, res) => {
+      var item = {
+        is_read: true,
+        rate: req.body.rateBook,
+        note: req.body.noteBook,
+        day: req.body.day,
+        year: req.body.year,
+        month: req.body.month,
+        quote: req.body.quote
+      };
+      var id = req.query.book_id;
+      db.collection('books').updateOne({"_id":ObjectID(id)}, {$set: item}, function(err, result) {
+        if (err) throw err;
+        console.log('Item updated', result.ops);
+      });
+      res.redirect('/booktrack');
     });
 
     app.post('/insert', (req, res) => {
@@ -71,6 +93,21 @@ client.connect((err, database) => {
       db.collection('books').insertOne(item, function(err, result) {
         if (err) throw err;
         console.log('Item inserted', result.ops);
+      });
+      res.redirect('/booktrack');
+    });
+
+    app.post('/insert_plan', (req, res) => {
+      var item = {
+        title: req.body.titleBook,
+        author: req.body.authorBook,
+        pages: req.body.pagesBook,
+        is_read: false,
+        cover: req.body.coverBook,
+      };
+      db.collection('books').insertOne(item, function(err, result) {
+        if (err) throw err;
+        console.log('Item(book plan) inserted', result.ops);
       });
       res.redirect('/booktrack');
     });

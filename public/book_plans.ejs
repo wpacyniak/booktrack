@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Book track - year</title>
+        <title>Plany czytelnicze</title>
         <%- include ('resources/head.html') %>
     </head>
 
@@ -24,7 +24,7 @@
                                     <h6 class="card-text text-center"> <%=book.author%></h6>
                                     <h6 class="card-text text-center"> Liczba stron: <%=book.pages%></h6>
                                     <div class="d-flex justify-content-center">
-                                        <a href="/add_book/delete?book_title=<%=book.title%>&book_author=<%=book.author%>&book_cover=<%=book.cover%>&book_pages=<%=book.pages%>&book_id=<%=book._id%>" 
+                                        <a href="/update_book?book_id=<%=book._id%>" 
                                             class="btn btn-primary">Przeczytane</a>
                                     </div>
                                 </div>
@@ -36,15 +36,6 @@
                     <% } %>
                 </div>
         </div>
-    <script type="text/javascript">
-        function deleteBook(book_id) {
-            console.log("trying to delete an item");
-            db.collection("books").deleteOne(( {"_id": book_id}), function(err, obj) {
-                if (err) throw err;
-                console.log("item deleted");
-            });
-        }
-    </script>
     </body>
     <%- include ('resources/scripts.html') %> 
 </html>

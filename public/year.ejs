@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Book track - year</title>
+        <title>Book track - roczne zestawienie</title>
         <%- include ('resources/head.html') %>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
@@ -31,7 +31,7 @@
                                                 <% if (books[i].year == current_year && books[i].is_read == true) { j = j + 1 %>
                                                     <tr>
                                                         <th scope='row'> <%= j %> </th>
-                                                        <td ><a href='/book_page?book_id=<%=books[i]._id%>' id="choosen_book" name="choosen_book"> <%=books[i].title%> </a></td>
+                                                        <td ><a class="text-dark book_info_title text-decoration-none" href='/book_page?book_id=<%=books[i]._id%>' id="choosen_book" name="choosen_book"> <%=books[i].title%> </a></td>
                                                         <td > <%=books[i].author%> </td>
                                                         <td > <%=books[i].pages%> </td>
                                                         <td > <%=books[i].day%>-<%=books[i].month%>-<%=books[i].year%> </td>

@@ -15,6 +15,15 @@ body {
         height: 400px;    
 }
 
+.head_booktrack {
+        background-color: #F1B880;
+        height: 400px; 
+}
+
+.read_book {
+        background-color: #FAD5A4;
+}
+
 .head_cv {
         background-color: #B97C6B;
         height: 400px;    
@@ -37,8 +46,20 @@ body {
         object-fit: cover;
 }
 
+.img2_main {
+        margin-top: 5vw;
+        width: 450px;
+        padding: 5px;
+        object-fit: cover;
+}
+
 .body_main {
         background-color: #ffffff;
+        overflow-x: hidden;
+}
+
+.body_booktrack {
+        background-color: #F3E0CE;
         overflow-x: hidden;
 }
 
@@ -51,14 +72,6 @@ body {
         text-align: right;
 }
 
-#choose-year {
-        text-align: center;
-        margin-top: 40vh;
-        transform: translateY(-50%);
-        background-color: #FFDAD6;
-        border-radius: 25px;
-        padding-bottom: 20px;
-}
 
 .navbar-brand {
         font-weight: 600;
@@ -150,10 +163,23 @@ body {
  }
 
  .button-booktrack {
-        width: 90% !important;
+         background-color: #F2A477 !important;
+         border-color: #F2A477 i !important;
  }
 
  .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
     background-color: #ffb4a2 !important;
     border-color: #ffb4a2 !important;
 }
+
+.add-book {
+        margin-top: 11vw;
+}
+
+.book-plan {
+        margin-top: 12vw;
+}
+
+.form-select {
+        font-size: 20px !important;
+      }

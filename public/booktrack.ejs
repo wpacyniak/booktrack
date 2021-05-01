@@ -5,36 +5,36 @@
         <%- include ('resources/head.html') %>
     </head>
 
-    <body>
-        <%- include ('resources/header.ejs') %>
+    <body class="body_booktrack">
         <div class="container"> 
-            <div class="row">
-                <div class="col-xs-12 col-lg-9 col-xl-10 mx-auto " >
-                    <div class="col-xs-8 col-lg-6 col-xl-4 mx-auto" id="choose-year"> <!-- id tutaj do css --> 
-                        <form class= "row g-3" action ="/year" method="get" id="form_choose_year" onsubmit="event.preventDefault(); validateForm();">
-                            <h4>Statystyki czytelnicze: </h4>
-                            <div class="col-12">
-                                <select class="form-select" id="choosen_year" name="choosen_year">
-                                    <option selected value = 0 >Wybierz rok...</option>
-                                    <option value = 2020>2020</option>
-                                    <option value = 2021>2021</option>
-                                </select>
-                            </div>
-                            <div class="col-12">
-                                <button class="btn btn-light" type="submit">Potwierdź</button>
-                            </div>
-                        </form>
-                        <div class="col-12 mb-4">
-                            <a class="btn btn-light btn-lg button-booktrack" href="/add_book_plan">Dodawanie planu czytelniczego</a>
-                        </div>  
-                        <div class="col-12 mb-4">
-                            <a class="btn btn-light btn-lg button-booktrack" href="/add_book">Dodaj książkę</a>
+            <div class="row row-full head_booktrack">
+                <%- include ('resources/header.ejs') %>
+                <div class="col-4 text-center">
+                    <img class="img2_main" src="resources/img/mirror.jpg" alt="obrazek z lustrem">
+                </div>  
+                <div class="col-4 text-center add-book">
+                    <h3 class="mb-2 subheading">Jeśli chcesz dodać przeczytaną książkę:</h3>
+                    <a class="btn btn-lg button-booktrack mb-5" href="/add_book">Kliknij tutaj</a>  
+                    <h3 class="mb-2 subheading">Lista przeczytanych książek:</h3>
+                    <form class= "row g-3" action ="/year" method="get" id="form_choose_year" onsubmit="event.preventDefault(); validateForm();">
+                        <div class="col-4 mx-auto">
+                            <select class="form-select" id="choosen_year" name="choosen_year">
+                                <option selected value = 0 >Wybierz rok...</option>
+                                <option value = 2020>2020</option>
+                                <option value = 2021>2021</option>
+                            </select>
                         </div>
                         <div class="col-12">
-                            <a class="btn btn-light btn-lg button-booktrack" href="/book_plans">Plany czytelnicze</a>
-                        </div>    
-                    </div>
+                            <button class="btn button-booktrack btn-lg" type="submit">Potwierdź</button>
+                        </div>
+                    </form>
                 </div>
+                <div class="col-4 text-center book-plan">
+                    <h3 class=" subheading">Jeśli chcesz dodać plan czytelniczy:</h3>
+                    <a class="btn btn-lg button-booktrack mb-4" href="/add_book_plan">Kliknij tutaj</a>
+                    <h3 class=" subheading">Lista planów czytelniczych:</h3>
+                    <a class="btn btn-lg button-booktrack" href="/book_plans">Tutaj!</a>
+                </div> 
             </div>
         </div>
     <%- include ('resources/scripts.html') %>
@@ -54,5 +54,4 @@
 		}
 	</script>    
     </body>
-
 </html>

@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Main page</title>
+        <title>wpacyniak</title>
         <%- include ('resources/head.html') %>
     </head>
 
-    <body>
-        <%- include ('resources/header.ejs') %>
-        <!-- container - zbiorczy pojemnik responsywnej siatki -->
-        <div class="container">
-
-            <!-- responsywna siatka ma wiersze, która oddziela zestawy kolumn - wrapper dla kolumn -->
+    <body class="body_main">  
+      <div class="container">
+        <div class="row-full head_main">
+            <%- include ('resources/header.ejs') %>
             <div class="row">
-                <div class="col-xs-12 col-lg-9 col-xl-10 mx-auto" id="main_col">
-                    <blockquote class="blockquote text-center">
-                        <p class="lead"><em>Co spróbowałbyś zrobić, gdybyś wiedział, że nie może Ci się nie udać?</em></p>
-                        <footer class="blockquote-footer">dr <cite title="Source Title">Robert H Schuller</cite></footer>
-                    </blockquote>
-
+              <div class="col-md-4 text-center">
+                <img class="img1_main" src="resources/img/jeans.jpg" alt="obrazek z jeansami">
+              </div>  
+              <div class="col-md-7 text-center mt-5">
+                <h2 class="subheading " id="firstText">“Remember to look up at the stars and not down at your feet. Try to make sense of what you see and wonder about what makes the universe exist. Be curious. And however difficult life may seem, there is always something you can do and succeed at. It matters that you don’t just give up.”</h2>
+                Stephen Hawking
+              </div>  
+          </div>
+        </div>
+      </div>
+                <!--<div class="col-xs-12 col-lg-9 col-xl-10 mx-auto">
                     <p id='title_main' class= "text-center">APRIL TO DO:</p>
                     <div id = "checkboxes_main">
                         <div class="form-check">
@@ -76,7 +79,7 @@
                     </blockquote>
                 </div>
             </div>
-          </div>
+          </div> -->
           <%- include ('resources/scripts.html') %>
     </body>
 

@@ -7,14 +7,17 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
     </head>
 
-    <body>
-        <%- include ('resources/header.ejs') %>
+    <body class="body_year">
+        
         <div class="container"> 
+             <div class ="head_year row-full mb-3">
+                    <%- include ('resources/header.ejs') %>
+                    <h2 class="text-center year_title ">Przeczytane w roku <%=current_year%>: </h2>
+                </div>
             <div class="row">
-                <div class="col-xs-12 col-lg-9 col-xl-10 mx-auto main_col">
+                <div class="col-xs-12 col-lg-9 col-xl-10 mx-auto">
                     <div>
-                        <h3 class="text-center">Przeczytane w roku <%=current_year%>: </h3>
-                        <table class="table">
+                        <table class="table table-borderless table-hover mb-5">
                                 <thead>
                                         <tr>
                                             <th scope="col"> </th>
@@ -47,7 +50,7 @@
                         </table>
                     </div>
                     <div>
-                        <h4 class="text-center">Liczba stron przeczytanych w danym miesiącu: </h4>
+                        <h4 class="text-center diagram_title">Liczba stron przeczytanych w danym miesiącu: </h4>
                         <% var books_array = Array.from(Array(books.length), () => new Array(3)); %>
                         <% for(let i=0; i < books.length; i++) { %>
                             <% books_array[i][0] = parseInt(books[i].year) %> 
@@ -89,32 +92,32 @@
                     label: 'Rok ' + current_year,
                     data: dataB,
                     backgroundColor: [
-                        'rgba(247, 37, 133, 0.5)',
-                        'rgba(181, 23, 158, 0.5)',
-                        'rgba(114, 9, 183, 0.5)',
-                        'rgba(86, 11, 173, 0.5)',
-                        'rgba(72, 12, 168, 0.5)',
-                        'rgba(58, 12, 163, 0.5)',
-                        'rgba(63, 55, 201, 0.5)',
-                        'rgba(67, 97, 238, 0.5)',
-                        'rgba(72, 149, 239, 0.5)',
-                        'rgba(76, 201, 240, 0.5)',
-                        'rgba(100, 223, 223, 0.5)',
-                        'rgba(128, 255, 219, 0.5)'
+                        'rgba(119, 73, 54, 0.5)',
+                        'rgba(138, 90, 68, 0.5)',
+                        'rgba(157, 107, 83, 0.5)',
+                        'rgba(176, 125, 98, 0.5)',
+                        'rgba(195, 142, 112, 0.5)',
+                        'rgba(205, 151, 119, 0.5)',
+                        'rgba(214, 159, 126, 0.5)',
+                        'rgba(222, 171, 144, 0.5)',
+                        'rgba(230, 184, 162, 0.5)',
+                        'rgba(237, 196, 179, 0.5)',
+                        'rgba(230, 184, 162, 0.5)',
+                        'rgba(222, 171, 144, 0.5)'
                     ],
                     borderColor: [
-                        'rgba(247, 37, 133, 1)',
-                        'rgba(181, 23, 158, 1)',
-                        'rgba(114, 9, 183, 1)',
-                        'rgba(86, 11, 173, 1)',
-                        'rgba(72, 12, 168, 1)',
-                        'rgba(58, 12, 163, 1)',
-                        'rgba(63, 55, 201, 1)',
-                        'rgba(67, 97, 238, 1)',
-                        'rgba(72, 149, 239, 1)',
-                        'rgba(76, 201, 240, 1)',
-                        'rgba(100, 223, 223, 1)',
-                        'rgba(128, 255, 219, 1)'
+                        'rgba(119, 73, 54, 1)',
+                        'rgba(138, 90, 68, 1)',
+                        'rgba(157, 107, 83, 1)',
+                        'rgba(176, 125, 98, 1)',
+                        'rgba(195, 142, 112, 1)',
+                        'rgba(205, 151, 119, 1)',
+                        'rgba(214, 159, 126, 1)',
+                        'rgba(222, 171, 144, 1)',
+                        'rgba(230, 184, 162, 1)',
+                        'rgba(237, 196, 179, 1)',
+                        'rgba(230, 184, 162, 1)',
+                        'rgba(222, 171, 144, 1)'
                     ],
                     borderWidth: 1
                 }]

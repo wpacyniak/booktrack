@@ -10,6 +10,7 @@ body {
         position: relative;
 }
 
+
 .head_main {
         background-color: #C68485;
         height: 400px;    
@@ -17,8 +18,9 @@ body {
 
 .head_booktrack {
         background-color: #F1B880;
-        height: 400px; 
+        height: 300px; 
 }
+
 
 .read_book {
         background-color: #FAD5A4;
@@ -66,6 +68,29 @@ body {
 .body_cv {
         background-color: #E5CFC2;
         overflow-x: hidden;
+}
+
+.body_year {
+        background-color: #E1C6B7;
+        overflow-x: hidden;
+        font-weight:400%;
+}
+
+.head_year {
+        background-color: #CFA38C;
+        height: 150px;
+}
+
+.year_title {
+        letter-spacing: 10px;
+        text-transform: uppercase;
+        font-weight: 600;
+}
+
+.diagram_title {
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        font-weight: 400;
 }
 
 .work {
@@ -156,6 +181,7 @@ body {
 
  .book_info_title {
         font-weight:bold;
+        letter-spacing: 3px;
  }
 
  #GraphBook {
@@ -172,12 +198,10 @@ body {
     border-color: #ffb4a2 !important;
 }
 
-.add-book {
-        margin-top: 11vw;
-}
-
-.book-plan {
-        margin-top: 12vw;
+.booktrack-title {
+        font-size: 250px;
+        letter-spacing: 3px;
+        color: #957354;
 }
 
 .form-select {

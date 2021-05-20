@@ -5,14 +5,14 @@
         <%- include ('resources/head.html') %>
     </head>
 
-    <body>
-        <%- include ('resources/header.ejs') %>
+    <body class="body_booktrack">
         <div class="container"> 
-            <div class="row">
-                <div class="col-xs-12 col-lg-9 col-xl-10 mx-auto main_col">
-                    <h2 class="text-center"> Dodawanie książki: </h2>
-                    <div class="col-xs-8 col-lg-7 col-xl-8 mx-auto">
-                        <h1 class="text-uppercase text-center"> 
+            <div class="row row-full head_booktrack">
+                <%- include ('resources/header.ejs') %>
+                <div class="col-xs-12 col-lg-9 col-xl-10 mx-auto">
+                    <h2 class="add_title"> dodawanie książki: </h2>
+                    <div class="col-xs-8 col-lg-5 col-xl-7 mt-5 mx-auto">
+                        <h1 class="book_title mb-2"> 
                             <%=current_book.title%> 
                         </h1> 
                         <div class="subheading mb-1 text-center"> 
@@ -27,7 +27,7 @@
                             <div id="dateBook" class="row">
                                 <div class="form-group col-md-4">
                                 <label for="day">Dzień:</label>
-                                <select id="day" name="day" class="form-control">
+                                <select id="day" name="day" class="form-control input-custom">
                                     <option selected>Wybierz dzień...</option>
                                     <% for(let i=1; i < 32; i++) { %>
                                     <option value=<%=i%> ><%=i%></option>
@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                 <label for="month">Miesiąc:</label>
-                                <select id="month" name="month" class="form-control">
+                                <select id="month" name="month" class="form-control input-custom">
                                     <option selected>Wybierz miesiąc...</option>
                                     <option value=1>Styczeń</option>
                                     <option value=2>Luty</option>
@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                 <label for="year">Rok:</label>
-                                <select id="year" name="year" class="form-control">
+                                <select id="year" name="year" class="form-control input-custom">
                                     <option selected>Wybierz rok...</option>
                                     <option value=2019 >2019</option>
                                     <option value=2020 >2020</option>
@@ -63,38 +63,38 @@
                                 </div>
                             </div>
                             <label for="rateBook">Ocena:</label>
-                            <div class="form-group" name="rateBook" id="rateBook">
+                            <div class="form-group text-center" name="rateBook" id="rateBook">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="rateBook" type="checkbox" id="oneStar" value="1">
+                                    <input class="form-check-input input-custom" type="radio" name="rateBook" type="checkbox" id="oneStar" value="1">
                                     <label class="form-check-label" for="oneStar">&#x2B50;</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="rateBook" type="checkbox" id="twoStar" value="2">
+                                    <input class="form-check-input input-custom" type="radio" name="rateBook" type="checkbox" id="twoStar" value="2">
                                     <label class="form-check-label" for="twoStar">&#x2B50; &#x2B50;</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="rateBook" type="checkbox" id="threeStar" value="3">
+                                    <input class="form-check-input input-custom" type="radio" name="rateBook" type="checkbox" id="threeStar" value="3">
                                     <label class="form-check-label" for="threeStar">&#x2B50; &#x2B50; &#x2B50;</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="rateBook" type="checkbox" id="fourStar" value="4">
+                                    <input class="form-check-input input-custom" type="radio" name="rateBook" type="checkbox" id="fourStar" value="4">
                                     <label class="form-check-label" for="fourStar">&#x2B50; &#x2B50; &#x2B50; &#x2B50;</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="rateBook" type="checkbox" id="fiveStar" value="5">
+                                    <input class="form-check-input input-custom" type="radio" name="rateBook" type="checkbox" id="fiveStar" value="5">
                                     <label class="form-check-label" for="fiveStar">&#x2B50; &#x2B50; &#x2B50; &#x2B50; &#x2B50;</label>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="comment">Notatka:</label>
-                                <textarea class="form-control" rows="4" name="noteBook" id="noteBook" placeholder="Notatka"></textarea>
+                                <textarea class="form-control input-custom" rows="4" name="noteBook" id="noteBook" placeholder="Notatka"></textarea>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="quote">Cytat:</label>
-                                <input type="text" class="form-control" name="quote" id="quote" placeholder="Cytat">
+                                <input type="text" class="form-control input-custom" name="quote" id="quote" placeholder="Cytat">
                             </div>
                             <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-light">Dodaj</button>
+                                <button type="submit" class="btn btn-light input-custom btn-lg">Dodaj</button>
                             </div>
                         </form>
                     </div>

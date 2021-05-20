@@ -70,22 +70,6 @@ body {
         overflow-x: hidden;
 }
 
-.body_year {
-        background-color: #E1C6B7;
-        overflow-x: hidden;
-        font-weight:400%;
-}
-
-.head_year {
-        background-color: #CFA38C;
-        height: 150px;
-}
-
-.year_title {
-        letter-spacing: 10px;
-        text-transform: uppercase;
-        font-weight: 600;
-}
 
 .diagram_title {
         letter-spacing: 4px;
@@ -150,6 +134,19 @@ body {
         letter-spacing: 10px; 
 }
 
+.add_title {
+        text-align: center;
+        font-size: 90px;
+        letter-spacing: 4px;
+        color: rgb(149, 115, 84);
+}
+
+
+.input-custom{
+        background-color:rgba(149,115,84,0.2) !important;
+        border:none !important;
+     }
+
 .school {
         text-align: right;
 }
@@ -159,29 +156,35 @@ body {
 }
 
 #cover_book {
-        width:28%;
-        padding: 2%;
+        width:400px;
         object-fit: cover;
         position: absolute;
-        right: 5%;
+        right: 8%;
         display: inline-block;
  }
 
  #form_choose_year {
-        /* background-color: #FFDAD6;
-        border-radius: 25px; */
         padding: 20px;
  }
 
  #book_info {
+        margin-top: 40px;
         position:relative;
         padding: 5%;
         width: 70%;
+        text-align: justify;
  }
 
  .book_info_title {
         font-weight:bold;
         letter-spacing: 3px;
+ }
+
+ .book_title {
+        text-transform: uppercase;
+        text-align: center;
+        letter-spacing: 5px;
+        font-size: 45px;
  }
 
  #GraphBook {
@@ -194,8 +197,8 @@ body {
  }
 
  .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-    background-color: #ffb4a2 !important;
-    border-color: #ffb4a2 !important;
+    background-color: #F1B880 !important;
+    border-color: #F1B880 !important;
 }
 
 .booktrack-title {
@@ -207,3 +210,7 @@ body {
 .form-select {
         font-size: 20px !important;
       }
+
+.card-img-top {
+        height:500px !important;
+}

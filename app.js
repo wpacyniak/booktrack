@@ -4,14 +4,12 @@ const path = require('path')
 const app = express()
 const port = 3000
 
-//idk czy to potrzebne xd
 app.use(express.static(__dirname + '/public/'));
 app.use(express.json());
 var bodyParser = require('body-parser');
 var ObjectID = require('mongodb').ObjectID;
 app.use(bodyParser.urlencoded({extended: false}));
 
-//zmienne do bazy danych
 const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb+srv://wpacyniak:7092000wp@books.yprgy.mongodb.net/bookTrack?retryWrites=true&w=majority";
 const client = new MongoClient(url, {
@@ -19,7 +17,6 @@ const client = new MongoClient(url, {
     useUnifiedTopology: true
 });
 
-//łączenie z bazą danych, wszystko wewnątrz zeby baza byla ciagle podlaczona
 client.connect((err, database) => {
     
     db = client.db("bookTrack");
@@ -151,8 +148,6 @@ client.connect((err, database) => {
       });
     });
     
-
-//zawsze jest, zeby dzialalo, nasluchiwanie portu!!
     app.listen(port, () => {
       console.log(`App listening at http://localhost:${port}`)
     });

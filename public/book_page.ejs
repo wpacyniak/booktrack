@@ -5,18 +5,18 @@
         <%- include ('resources/head.html') %>
     </head>
 
-    <body>
-        <%- include ('resources/header.ejs') %>
-        <div class="container"> 
-            <div class="row">
-                <div class="col-xs-12 col-lg-9 col-xl-10 mx-auto main_col">
-                    <h1 class="text-uppercase text-center"> 
+    <body class="body_booktrack">
+        <div class="container">
+            <div class="row row-full head_booktrack text-center">
+                <%- include ('resources/header.ejs') %>
+                <div class="col-xs-12 col-lg-9 col-xl-10 mx-auto">
+                    <h1 class="book_title mt-2"> 
                         <%=current_book.title%> 
                     </h1> 
-                    <div class="subheading mb-1 text-center"> 
+                    <div class="subheading mt-2 mb-2 text-center"> 
                         <%=current_book.author%> 
                     </div>
-                    <div class="text-center">
+                    <div class="text-center mb-2">
                         <% for(let x = 0; x < current_book.rate; x++) { %>
                             <span>&#x2B50; </span>
                             <% } %>
@@ -24,24 +24,24 @@
                     <blockquote class="blockquote text-center">
                         <p class="lead"><em><%=current_book.quote%></em></p>
                     </blockquote>
+                    
                     <img id="cover_book" class="img-fluid" src="<%=current_book.cover%>" alt="Okładka ksiązki">
                     <div id="book_info">
-                        <div class="text-left">
+                        <div>
                             <span class="book_info_title">Liczba stron: </span>
                             <%=current_book.pages%>
                         </div>
-                        <div class="text-left">
+                        <div>
                             <span class="book_info_title">Data przeczytania: </span>
                             <%=current_book.day%>-<%=current_book.month%>-<%=current_book.year%> 
                         </div>
-                        <p class="text-left text-justify" >
+                        <p>
                             <%=current_book.note%> 
                         </p>
                     </div>    
                 </div>
             </div>
         </div>
-         
     </body> 
     <%- include ('resources/scripts.html') %>
 </html>

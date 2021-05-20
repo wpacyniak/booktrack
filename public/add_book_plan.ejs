@@ -5,32 +5,32 @@
         <%- include ('resources/head.html') %>
     </head>
 
-    <body>
-        <%- include ('resources/header.ejs') %>
+    <body class="body_booktrack">
         <div class="container"> 
-            <div class="row">
-                <div class="col-xs-12 col-lg-9 col-xl-10 mx-auto main_col">
-                    <h2 class="text-center"> Dodawanie planu czytelniczego: </h2>
-                    <div class="col-xs-8 col-lg-7 col-xl-8 mx-auto">
+            <div class="row row-full head_booktrack">
+                <%- include ('resources/header.ejs') %>
+                <div class="col-xs-12 col-lg-9 col-xl-10 mx-auto">
+                    <h2 class="add_title"> dodawanie planu czytelniczego: </h2>
+                    <div class="col-xs-8 col-lg-5 col-xl-7 mt-5 mx-auto">
                         <form action="/insert_plan" method="post">
-                            <div class="form-group">
-                            <label for="titleBook">Tytuł:</label>
-                            <input type="text" class="form-control" name="titleBook" id="titleBook" placeholder="Tytuł">
+                            <div class="form-group mb-3">
+                                <label for="titleBook">Tytuł:</label>
+                                <input type="text" class="form-control input-custom" name="titleBook" id="titleBook" placeholder="Tytuł">
                             </div>
-                            <div class="form-group">
-                            <label for="authorBook">Autor:</label>
-                            <input type="text" class="form-control" name="authorBook" id="authorBook" placeholder="Autor">
+                            <div class="form-group mb-3">
+                                <label for="authorBook">Autor:</label>
+                                <input type="text" class="form-control input-custom" name="authorBook" id="authorBook" placeholder="Autor">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label for="pagesBook">Liczba stron:</label>
-                                <input type="number" name="pagesBook" class="form-control" id="pagesBook" placeholder="Liczba stron">
+                                <input type="number" name="pagesBook" class="form-control input-custom" id="pagesBook" placeholder="Liczba stron">
                             </div>
                             <div class="form-group mb-3">
                                 <label for="coverBook">Okładka:</label>
-                                <input type="text" class="form-control" name="coverBook" id="coverBook" placeholder="Wstaw link!">
+                                <input type="text" class="form-control input-custom" name="coverBook" id="coverBook" placeholder="Wstaw link!">
                             </div>
                             <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-light">Dodaj</button>
+                                <button type="submit" class="btn btn-light btn-lg input-custom">Dodaj</button>
                             </div>
                         </form>
                     </div>

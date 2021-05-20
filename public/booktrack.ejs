@@ -14,10 +14,12 @@
                 </div>
                 <div class="col-8">
                     <h2 class="booktrack-title">booktrack</h2>
-                    <div class = "row">
+                    <div class = "row mb-4">
                         <div class="col-6 text-center">
                             <h3 class="mb-2 subheading">Jeśli chcesz dodać przeczytaną książkę:</h3>
-                            <a class="btn btn-lg button-booktrack mb-5" href="/add_book">Kliknij tutaj</a>  
+                            <a class="btn btn-lg button-booktrack mt-5" href="/add_book">Kliknij tutaj</a>
+                        </div>
+                        <div class="col-6 text-center">
                             <h3 class="mb-2 subheading">Lista przeczytanych książek:</h3>
                             <form class= "row g-3" action ="/year" method="get" id="form_choose_year" onsubmit="event.preventDefault(); validateForm();">
                                 <div class="col-4 mx-auto">
@@ -32,12 +34,16 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-6 text-center">
+                   </div>
+                   <div class="row">
+                       <div class="col-6 text-center">
                             <h3 class=" subheading">Jeśli chcesz dodać plan czytelniczy:</h3>
-                            <a class="btn btn-lg button-booktrack mb-4" href="/add_book_plan">Kliknij tutaj</a>
+                            <a class="btn btn-lg button-booktrack mt-5" href="/add_book_plan">Kliknij tutaj</a>
+                       </div>
+                       <div class="col-6 text-center">
                             <h3 class=" subheading">Lista planów czytelniczych:</h3>
-                            <a class="btn btn-lg button-booktrack" href="/book_plans">Tutaj!</a>
-                        </div> 
+                            <a class="btn btn-lg button-booktrack mt-5" href="/book_plans">Tutaj!</a>
+                        </div>
                    </div> 
                 </div>
              </div>    
@@ -47,15 +53,12 @@
 		function validateForm() {
 			let select = document.getElementById("choosen_year");
 			let form = document.getElementById("form_choose_year");
-
 			if(select.value != 0 ){
 				form.submit();
 			}
-
 			else {
 				alert("Proszę wybrać rok!");
 			}
-
 		}
 	</script>    
     </body>

@@ -7,68 +7,61 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
     </head>
 
-    <body class="body_year">
-        
+    <body class="body_booktrack">
         <div class="container"> 
-             <div class ="head_year row-full mb-3">
-                    <%- include ('resources/header.ejs') %>
-                    <h2 class="text-center year_title ">Przeczytane w roku <%=current_year%>: </h2>
+            <div class ="row row-full head_booktrack">
+                <%- include ('resources/header.ejs') %>
+                <h2 class="add_title mb-5">przeczytane w roku <%=current_year%>: </h2>
+                <div class="col-xs-12 col-lg-8 col-xl-9 mt-5 mx-auto">
+                    <table class="table table-borderless table-hover mb-5">
+                            <thead>
+                                    <tr>
+                                        <th scope="col"> </th>
+                                        <th scope="col"> Tytuł </th>
+                                        <th scope="col"> Autor </th>
+                                        <th scope="col"> Liczba stron </th>
+                                        <th scope="col"> Data zakończenia </th>
+                                        <th scope="col"> Ocena </th>
+                                    </tr>
+                            </thead>
+                            <tbody>
+                                    <% var j = 0 %>
+                                    <% for(let i=0; i < books.length; i++) { %>
+                                            <% if (books[i].year == current_year && books[i].is_read == true) { j = j + 1 %>
+                                                <tr>
+                                                    <th scope='row'> <%= j %> </th>
+                                                    <td ><a class="text-dark book_info_title text-decoration-none" href='/book_page?book_id=<%=books[i]._id%>' id="choosen_book" name="choosen_book"> <%=books[i].title%> </a></td>
+                                                    <td > <%=books[i].author%> </td>
+                                                    <td > <%=books[i].pages%> </td>
+                                                    <td > <%=books[i].day%>-<%=books[i].month%>-<%=books[i].year%> </td>
+                                                    <td > 
+                                                        <% for(let x = 0; x < books[i].rate; x++) { %>
+                                                        <span>&#x2B50; </span>
+                                                        <% } %>
+                                                    </td>
+                                                </tr>    
+                                            <% } %>
+                                    <% } %>
+                            </tbody>
+                    </table>
                 </div>
-            <div class="row">
-                <div class="col-xs-12 col-lg-9 col-xl-10 mx-auto">
-                    <div>
-                        <table class="table table-borderless table-hover mb-5">
-                                <thead>
-                                        <tr>
-                                            <th scope="col"> </th>
-                                            <th scope="col"> Tytuł </th>
-                                            <th scope="col"> Autor </th>
-                                            <th scope="col"> Liczba stron </th>
-                                            <th scope="col"> Data zakończenia </th>
-                                            <th scope="col"> Ocena </th>
-                                        </tr>
-                                </thead>
-                                <tbody>
-                                        <% var j = 0 %>
-                                        <% for(let i=0; i < books.length; i++) { %>
-                                                <% if (books[i].year == current_year && books[i].is_read == true) { j = j + 1 %>
-                                                    <tr>
-                                                        <th scope='row'> <%= j %> </th>
-                                                        <td ><a class="text-dark book_info_title text-decoration-none" href='/book_page?book_id=<%=books[i]._id%>' id="choosen_book" name="choosen_book"> <%=books[i].title%> </a></td>
-                                                        <td > <%=books[i].author%> </td>
-                                                        <td > <%=books[i].pages%> </td>
-                                                        <td > <%=books[i].day%>-<%=books[i].month%>-<%=books[i].year%> </td>
-                                                        <td > 
-                                                            <% for(let x = 0; x < books[i].rate; x++) { %>
-                                                            <span>&#x2B50; </span>
-                                                            <% } %>
-                                                        </td>
-                                                    </tr>    
-                                                <% } %>
-                                        <% } %>
-                                </tbody>
-                        </table>
-                    </div>
-                    <div>
-                        <h4 class="text-center diagram_title">Liczba stron przeczytanych w danym miesiącu: </h4>
-                        <% var books_array = Array.from(Array(books.length), () => new Array(3)); %>
-                        <% for(let i=0; i < books.length; i++) { %>
-                            <% books_array[i][0] = parseInt(books[i].year) %> 
-                            <% books_array[i][1] = parseInt(books[i].month) %> 
-                            <% books_array[i][2] = parseInt(books[i].pages) %> 
-                        <% } %>                    
-                        <canvas id="GraphBook"></canvas>
-                    </div>
+                <div class="col-xs-8 col-lg-5 col-xl-6 mx-auto">
+                    <h4 class="text-center diagram_title">Liczba stron przeczytanych w danym miesiącu: </h4>
+                    <% var books_array = Array.from(Array(books.length), () => new Array(3)); %>
+                    <% for(let i=0; i < books.length; i++) { %>
+                        <% books_array[i][0] = parseInt(books[i].year) %> 
+                        <% books_array[i][1] = parseInt(books[i].month) %> 
+                        <% books_array[i][2] = parseInt(books[i].pages) %> 
+                    <% } %>                    
+                    <canvas id="GraphBook"></canvas>
                 </div>
             </div>
         </div>
-         
     </body>
 
     
     
     <%- include ('resources/scripts.html') %>
-    
     <script>
         var lgth = parseInt(`<%- JSON.stringify(books.length) %>`);
         var books = JSON.parse( `<%- JSON.stringify(books_array) %>`);

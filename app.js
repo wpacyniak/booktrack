@@ -4,6 +4,8 @@ const path = require('path')
 const app = express()
 const port = 3000
 
+require("dotenv").config();
+
 app.use(express.static(__dirname + '/public/'));
 app.use(express.json());
 var bodyParser = require('body-parser');
@@ -11,7 +13,7 @@ var ObjectID = require('mongodb').ObjectID;
 app.use(bodyParser.urlencoded({extended: false}));
 
 const MongoClient = require('mongodb').MongoClient;
-const url = "mongodb+srv://wpacyniak:7092000wp@books.yprgy.mongodb.net/bookTrack?retryWrites=true&w=majority";
+const url = process.env.ATLAS_URI;
 const client = new MongoClient(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
